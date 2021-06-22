@@ -4,8 +4,14 @@
 
 LISTY=$(find $1 -maxdepth 1 -type f)
 for i in $LISTY
-do 
+do
 chmod u+x $i
 echo '#!/usr/bin/env bash' > $i
 echo '#commment' >> $i
 done
+
+if [ ! -e $1/"README.md" ];
+then
+        touch $1/"README.md"
+        echo "comments go here" > $1/"README.md"
+fi
